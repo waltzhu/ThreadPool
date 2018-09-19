@@ -1,0 +1,3 @@
+1.hungrySingleton 饥饿式单例
+2.lazySingleton  饱汉式单例
+3.innerSingleton 匿名内部类单例
