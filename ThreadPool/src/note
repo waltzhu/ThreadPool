@@ -1,3 +1,9 @@
 1.hungrySingleton 饥饿式单例
 2.lazySingleton  饱汉式单例
 3.innerSingleton 匿名内部类单例
+4.线程安全包括：可见性和原子性，volatile能保证可见性，但不能保证原子性。synchornized二者都可以保证。
+5.JAVA线程里有2种线程，一种是守护线程，一种是用户线程。
+  比如垃圾回收线程就是守护线程，当不存在非守护线程了。守护线程自动销毁。
+6.suspend,resume 暂停和恢复线程。
+  
+  
