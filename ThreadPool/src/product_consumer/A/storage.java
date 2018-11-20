@@ -11,7 +11,7 @@ public class storage {
    
    public void produce(int num) throws Exception{
 	 synchronized (productList) {
-		   while((productList.size()+num)>this.MAX_SIZE){
+		   while((productList.size()+num)>this.MAX_SIZE){//注意这里是while，不能是if
 			   System.out.println("~~~~~~~"+Thread.currentThread().getName()+"生产满了-当前容量："+this.productList.size()+"无法再生产："+num);
 			   productList.wait();
 		   }
@@ -25,7 +25,7 @@ public class storage {
    
    public void consume(int num) throws Exception{ 
 	   synchronized (productList) {
-		   while(productList.size()<num){
+		   while(productList.size()<num){//注意这里是while，不能是if
 			   System.out.println("$$$$$$$$"+Thread.currentThread().getName()+"消费不够-当前容量："+this.productList.size()+"无法再消费："+num);
 			   productList.wait();
 		   }
