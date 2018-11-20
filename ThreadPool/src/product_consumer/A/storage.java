@@ -11,29 +11,30 @@ public class storage {
    
    public void produce(int num) throws Exception{
 	 synchronized (productList) {
-		   if((productList.size()+num)>this.MAX_SIZE){
-			   this.productList.wait();
-			   System.out.println("生产满了-当前容量："+this.productList.size()+"无法再生产："+num);
+		   while((productList.size()+num)>this.MAX_SIZE){
+			   System.out.println("~~~~~~~"+Thread.currentThread().getName()+"生产满了-当前容量："+this.productList.size()+"无法再生产："+num);
+			   productList.wait();
 		   }
 		   for(int i=0;i<num;i++){
 			   productList.add(new product());
 		   }
-		   System.out.println("生产完毕-当前容量："+this.productList.size()+"增量生产："+num);
-		   this.productList.notifyAll();
+		   System.out.println("~~~~~~~"+Thread.currentThread().getName()+"生产完毕-当前容量："+this.productList.size()+"增量生产："+num);
+		   productList.notifyAll();
 		}  
    }
    
    public void consume(int num) throws Exception{ 
 	   synchronized (productList) {
-		   if((productList.size()+num)>this.MAX_SIZE){
-			   this.productList.wait();
-			   System.out.println("消费不够-当前容量："+this.productList.size()+"无法再消费："+num);
+		   while(productList.size()<num){
+			   System.out.println("$$$$$$$$"+Thread.currentThread().getName()+"消费不够-当前容量："+this.productList.size()+"无法再消费："+num);
+			   productList.wait();
 		   }
+		   System.out.println("$$$$$$$$"+Thread.currentThread().getName()+"准备消费："+num);
 		   for(int i=0;i<num;i++){
 			   productList.remove();
 		   }
-		   System.out.println("消费完毕-当前容量："+this.productList.size()+"增量消费："+num);
-		   this.productList.notifyAll();
+		   System.out.println("$$$$$$$$"+Thread.currentThread().getName()+"消费完毕-当前容量："+this.productList.size()+"增量消费："+num);
+		   productList.notifyAll();
 	   }
    }
 

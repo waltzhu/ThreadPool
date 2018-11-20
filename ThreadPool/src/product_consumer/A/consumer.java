@@ -8,8 +8,12 @@ public class consumer extends Thread{
 		 this.storage=storage;
 	 }
 	 
-	 public void run(int num) throws Exception{
-		 this.consume(num);
+	 public void run()  {
+		 try {
+			this.consume(num);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	 }
 	 
 	 public void consume(int num) throws Exception{

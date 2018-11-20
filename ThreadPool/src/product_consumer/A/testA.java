@@ -13,8 +13,7 @@ public class testA {
        producer p4 = new producer(storage);  
        producer p5 = new producer(storage);  
        producer p6 = new producer(storage);  
-       producer p7 = new producer(storage);  
- 
+       producer p7 = new producer(storage); 
        // 消费者对象  
        consumer c1 = new consumer(storage);  
        consumer c2 = new consumer(storage);  
@@ -28,25 +27,24 @@ public class testA {
        p5.setNum(10);  
        p6.setNum(10);  
        p7.setNum(80);  
- 
+       
        // 设置消费者产品消费数量  
        c1.setNum(50);  
        c2.setNum(20);  
        c3.setNum(30);  
-       
-       
  
        // 线程开始执行  
        c1.start();  
        c2.start();  
-       c3.start();  
+       c3.start();
+	   
        p1.start();  
        p2.start();  
        p3.start();  
        p4.start();  
        p5.start();  
        p6.start();  
-       p7.start();  
-	   
+       p7.start(); 
+      
 }
 }
